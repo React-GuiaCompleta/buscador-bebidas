@@ -1,7 +1,6 @@
-// 3 todo el componente
-import { useState } from 'react'
-// 5 
 import { Container } from 'react-bootstrap'
+// 4 
+import Formulario from './components/Formulario'
 
 function App() {
 
@@ -12,9 +11,9 @@ function App() {
         <h1>Buscador de bebidas</h1>
       </header>
 
-      {/* 6 */}
       <Container className="mt-5">
-        1
+        {/* 5 */}
+        <Formulario />
       </Container>
 
     </>
