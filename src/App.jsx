@@ -1,22 +1,20 @@
 import { Container } from 'react-bootstrap'
-// 4 
 import Formulario from './components/Formulario'
+import { CategoriasProvider } from './context/CategoriasProvider'
 
 function App() {
 
   return (
-    <>
+    <CategoriasProvider>
       {/* Padding vertical arriba y abajo */}
-      <header className='py-5'>
+      <header className="py-5" >
         <h1>Buscador de bebidas</h1>
-      </header>
+      </header >
 
       <Container className="mt-5">
-        {/* 5 */}
         <Formulario />
       </Container>
-
-    </>
+    </CategoriasProvider>
   )
 }
 
