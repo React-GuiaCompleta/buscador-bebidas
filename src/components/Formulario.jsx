@@ -1,22 +1,20 @@
-// 1 -
 import { useState } from 'react'
-// 10 import alert
 import { Button, Form, Row, Col, Alert } from 'react-bootstrap'
 import useCategorias from '../hooks/useCategorias'
+// 8 -
+import useBebidas from '../hooks/useBebidas'
 
 const Formulario = () => {
-    // 2 -
     const [busqueda, setBusqueda] = useState({
         nombre: '',
         categoria: ' '
-
     })
-    //
-    // 9 -
+
     const [alerta, setAlerta] = useState('')
     const { categorias } = useCategorias()
+    // 9 - 
+    const { consultarBebida } = useBebidas()
 
-    // 8 
     const handleSubmit = e => {
         e.preventDefault()
         if (Object.values(busqueda).includes('')) {
@@ -25,14 +23,15 @@ const Formulario = () => {
         }
         // borrar la alerta si sí hay algo
         setAlerta('')
+        // 10 -
+        consultarBebida(busqueda)
     }
     //
     return (
         <Form
-            // 7 -
             onSubmit={handleSubmit}
         >
-            {/* 11 - si alerta tiene algo */}
+            {/*nsi alerta tiene algo */}
             {alerta && <Alert variant='danger' className='text-center'>{alerta}</Alert>}
             <Row>
                 <Col md={6}>
@@ -47,9 +46,7 @@ const Formulario = () => {
                             type="text"
                             placeholder="Ej: tequila, vodka,etc"
                             name="nombre"
-                            // 4 
                             value={busqueda.nombre}
-                            // 3 
                             onChange={e => setBusqueda({
                                 ...busqueda,
                                 [e.target.name]: e.target.value
@@ -67,9 +64,7 @@ const Formulario = () => {
                         <Form.Select
                             id="categoria"
                             name="categoria"
-                            // 6
                             value={busqueda.categoria}
-                            // 5
                             onChange={e => setBusqueda({
                                 ...busqueda,
                                 [e.target.name]: e.target.value
@@ -96,7 +91,6 @@ const Formulario = () => {
                         variant='danger'
                         // w-100 ocupa todo el ancho del md-3
                         className='text-uppercase w-100'
-                        // 12 - 
                         type="submit"
                     >
                         Buscar bebidas
