@@ -1,4 +1,3 @@
-// 1 Creamos BebidasProvider
 import { useState, useEffect, createContext } from "react";
 import axios from "axios";
 
@@ -7,9 +6,7 @@ const BebidasContext = createContext()
 
 // Provider
 const BebidasProvider = ({ children }) => {
-    // 11 -
     const [bebidas, setBebidas] = useState([])
-    // 6
     const consultarBebida = async datos => {
         try {
             // Template de strings ``
@@ -18,7 +15,7 @@ const BebidasProvider = ({ children }) => {
             const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?
             i=${datos.nombre}&c=${datos.categoria}`
             const { data } = await axios(url)
-            console.log("data:", data.drinks);
+            setBebidas(data.drinks)
         } catch (error) {
             console.log(error);
         }
@@ -27,9 +24,7 @@ const BebidasProvider = ({ children }) => {
     return (
         <BebidasContext.Provider
             value={{
-                // 7 -
                 consultarBebida,
-                // 12 -
                 bebidas
             }}
         >
@@ -43,3 +38,4 @@ export {
 }
 
 export default BebidasContext
+
