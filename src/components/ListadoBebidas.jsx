@@ -6,7 +6,6 @@ import Bebida from "./Bebida"
 const ListadoBebidas = () => {
     // el listado está en "bebidas", así que extraemos
     const { bebidas } = useBebidas()
-    console.log("si está llegando", bebidas);
     return (
         <Row>
             {bebidas.map(bebida => (

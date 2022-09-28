@@ -7,6 +7,8 @@ const BebidasContext = createContext()
 // Provider
 const BebidasProvider = ({ children }) => {
     const [bebidas, setBebidas] = useState([])
+    const [modal, setModal] = useState(false)
+
     const consultarBebida = async datos => {
         try {
             // Template de strings ``
@@ -20,12 +22,18 @@ const BebidasProvider = ({ children }) => {
             console.log(error);
         }
     }
+    const handleModalClick = () => {
+        // Lo contrario, si está false lo pasa a true
+        setModal(!modal)
+    }
     //
     return (
         <BebidasContext.Provider
             value={{
                 consultarBebida,
-                bebidas
+                bebidas,
+                handleModalClick,
+                modal
             }}
         >
             {children}
