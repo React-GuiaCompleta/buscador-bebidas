@@ -3,7 +3,8 @@ import useBebidas from "../hooks/useBebidas"
 
 // extraemos prop de bebida
 const Bebida = ({ bebida }) => {
-    const { handleModalClick } = useBebidas()
+    // extraer handleBebidaIdClick
+    const { handleModalClick, handleBebidaIdClick } = useBebidas()
 
     return (
         // 6 columnas, 4 columnas de las 12 columnas
@@ -27,6 +28,7 @@ const Bebida = ({ bebida }) => {
                         // }
                         onClick={() => {
                             handleModalClick()
+                            handleBebidaIdClick(bebida.idDrink)
                         }}
                     >
                         Ver receta
